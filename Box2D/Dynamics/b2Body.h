@@ -382,6 +382,12 @@ public:
 	/// Set the user data. Use this to store your application specific data.
 	void SetUserData(void* data);
 
+    /// Get the entity id set by user
+    uint32 GetEntityID() const;
+
+    /// Set the entity id
+    void SetEntityID(uint32 id);
+
 	/// Get the parent world of this body.
 	b2World* GetWorld();
 	const b2World* GetWorld() const;
@@ -470,6 +476,8 @@ private:
 	float32 m_sleepTime;
 
 	void* m_userData;
+
+	uint32 m_entityId;
 };
 
 inline b2BodyType b2Body::GetType() const
@@ -735,6 +743,14 @@ inline void b2Body::SetUserData(void* data)
 inline void* b2Body::GetUserData() const
 {
 	return m_userData;
+}
+
+inline uint32 b2Body::GetEntityID() const {
+    return m_entityId;
+}
+
+inline void b2Body::SetEntityID(uint32 id) {
+    m_entityId = id;
 }
 
 inline void b2Body::ApplyForce(const b2Vec2& force, const b2Vec2& point, bool wake)
